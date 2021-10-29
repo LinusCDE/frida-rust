@@ -23,6 +23,10 @@ pub fn download_and_use_devkit(kind: &str, version: &str) -> String {
         target_arch = "arm64".to_string();
     }
 
+    if target_arch == "arm" {
+        target_arch = "armhf".to_string();
+    }
+
     let os = env::var("CARGO_CFG_TARGET_OS").unwrap();
 
     let devkit_name = format!("frida-{}-devkit-{}-{}-{}", kind, version, os, target_arch,);
